@@ -37,7 +37,7 @@ public class ComplaintController {
         return complaintService.delete(id);
     }
 
-    @RequestMapping(value = "/{page}/{size}", method = RequestMethod.GET)
+    @RequestMapping(value = "/page={page}/items={size}", method = RequestMethod.GET)
     public List<Complaint> getComplaintsPage(@PathVariable(name = "page") int page, @PathVariable(name = "size") int size) {
         return complaintService.getPage(page, size);
     }

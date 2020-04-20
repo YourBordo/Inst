@@ -36,7 +36,7 @@ public class  ComplaintServiceImpl implements ComplaintService {
 
     @Override
     public List<Complaint> getPage(int page, int size) {
-        PageRequest pageRequest = PageRequest.of(page, size);
-        return complaintRepository.find(pageRequest).getContent();
+
+        return complaintRepository.findAll(PageRequest.of(page, size)).getContent();
     }
 }

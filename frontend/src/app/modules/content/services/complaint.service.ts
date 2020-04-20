@@ -15,8 +15,9 @@ export class ComplaintService {
   public getComplaints():Observable<object>{
     return this.httpClient.get("/api/complaint/");
   }
-  public getComplaintsPage():Observable<object>{
-    return this.httpClient.get("/api/complaint/1/2");
+
+  public getComplaintsPage(page: number, itemsAmount: number):Observable<object>{
+    return this.httpClient.get("/api/complaint/page="+(page-1)+"/items="+itemsAmount);
   }
 
 

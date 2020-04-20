@@ -33,6 +33,22 @@ public class Complaint {
         this.user = user;
     }
 
+/*
+    @JsonBackReference
+    @ManyToOne
+    //@Column
+    @JoinColumn(name = "postId")
+    private Post post;
+    public Post getPost() {
+        return post;
+    }
+    public void setPost(Post post) {
+        this.post = post;
+    }
+*/
+
+
+
     public long getId() {
         return id;
     }

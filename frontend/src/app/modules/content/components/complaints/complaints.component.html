@@ -3,8 +3,10 @@ one complaint
 <div>{{complaint | json}}</div>
 all complaints
 -->
-<div class="page">
+<div class="complaints">
   <ul>
-    <li *ngFor="let complaint of complaints">{{complaint | json}}</li>
+    <li *ngFor="let complaint of complaints">{{complaint.text | json}}{{complaint.i|}}</li>
   </ul>
 </div>
+<ngb-pagination [collectionSize]="complaintsAmount" [pageSize]="itemsAmount" [(page)]="page" (pageChange)="onPageChanged()" [boundaryLinks]="true"></ngb-pagination>
+
