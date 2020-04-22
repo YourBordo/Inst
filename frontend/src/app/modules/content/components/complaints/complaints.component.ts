@@ -12,7 +12,6 @@ export class ComplaintsComponent implements OnInit{
 
   public page: number = 1;
   public itemsAmount: number = 4;
-  public complaint: Complaint;
   public complaints: Complaint[];
   public complaintsAmount: number;
   constructor(private complaintService:ComplaintService) {}

@@ -1,0 +1,15 @@
+<div class="load-image">
+  <h3>Create new post!</h3>
+
+  <input type="file" (change)="onFileChanged($event)">
+  <img [src]="imgURL" height="200" *ngIf="imgURL">
+</div>
+<div>
+  <h5>Enter text</h5>
+  <input type="text" [(ngModel)]="text">
+</div>
+
+<div>
+<input type="button" (click)="onUpload()" value="upload">
+</div>
+

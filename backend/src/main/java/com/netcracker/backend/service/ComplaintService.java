@@ -13,4 +13,4 @@ public interface ComplaintService {
     Complaint add(Complaint complaint );
     Complaint delete(Long id);
     List<Complaint> getPage(int page, int size);
-}//
+}

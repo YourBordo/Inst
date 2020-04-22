@@ -9,8 +9,8 @@ import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   declarations: [ComplaintsComponent],
-    imports: [HttpClientModule, CommonModule,BrowserModule, NgbModule],
-  providers: [ComplaintService],
+  imports: [HttpClientModule, CommonModule,BrowserModule, NgbModule, NgbPaginationModule],
+  providers: [ComplaintService, NgbPaginationModule],
   exports: [ComplaintsComponent, NgbPaginationModule],
   bootstrap: [AppComponent]
 })

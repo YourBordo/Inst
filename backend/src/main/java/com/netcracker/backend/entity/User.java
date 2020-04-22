@@ -1,12 +1,13 @@
 package com.netcracker.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {//
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
@@ -37,6 +38,36 @@ public class User {//
     @OneToMany(mappedBy = "user")
     private List<Complaint>  complaints;
 
+    @ManyToMany
+    @JoinTable(
+            name = "subscription",
+            joinColumns = {
+                    @JoinColumn(name = "userId", referencedColumnName = "id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "subscriberId", referencedColumnName = "Id")}
+                    )
+
+    @JsonIgnore
+    private List<User> subscribedTo;
+    @ManyToMany(mappedBy = "subscribedTo")
+    @JsonIgnore
+    private List<User> subscribedBy;
+
+    public List<User> getSubscribedTo() {
+        return subscribedTo;
+    }
+
+    public void setSubscribedTo(List<User> subscribedTo) {
+        this.subscribedTo = subscribedTo;
+    }
+
+    public List<User> getSubscribedBy() {
+        return subscribedBy;
+    }
+
+    public void setSubscribedBy(List<User> subscribedBy) {
+        this.subscribedBy = subscribedBy;
+    }
 
     public long getId() {
         return id;

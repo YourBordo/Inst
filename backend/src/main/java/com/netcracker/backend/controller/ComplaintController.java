@@ -1,7 +1,6 @@
 package com.netcracker.backend.controller;
 
 import com.netcracker.backend.entity.Complaint;
-import com.netcracker.backend.entity.Student;
 import com.netcracker.backend.service.ComplaintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
