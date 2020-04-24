@@ -14,14 +14,26 @@ public class Post {
 
     @Lob
     @Column(name = "photo")
+    private String photo;
+/*
     private byte[] photo;
+*/
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+/*
     public byte[] getPhoto() {
         return photo;
     }
     public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
+*/
 
     @Basic
     @Column(name = "text")
@@ -76,6 +88,16 @@ public class Post {
         this.place = place;
     }
     public Post(){};
+    public Post(String date, long id, String photo, String place, String text, User user) {
+        this.date = date;
+        this.id = id;
+        this.photo = photo;
+        this.place = place;
+        this.text = text;
+        this.user = user;
+    }
+
+/*
     public Post(String date, long id, byte[] photo, String place, String text, User user) {
         this.date = date;
         this.id = id;
@@ -85,4 +107,5 @@ public class Post {
         this.user = user;
 
     }
+*/
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {PostService} from "../../services/post.service";
 import {Post} from "../../../models/post";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'post-create',
@@ -11,17 +12,12 @@ import {Post} from "../../../models/post";
 })
 
 export class PostCreatingComponent {
-  constructor(private httpClient: HttpClient) { }
 
-
-  title = 'ImageUploaderFrontEnd';
+  constructor(private httpClient: HttpClient, public _DomSanitizationService: DomSanitizer) { }
 
   public selectedFile;
   public text: string;
-  imgURL: any;
-  receivedImageData: any;
-  base64Data: any;
-  convertedImage: any;
+  public imgURL: any;
 
   public  onFileChanged(event) {
     console.log(event);
@@ -36,21 +32,24 @@ export class PostCreatingComponent {
 
   }
 
+  private receivedImageData: Post;
+  public convertedImg: any;
+
   onUpload() {
-/*
-    const uploadData = new FormData();
-    uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+    console.log(this.imgURL);
 
 
-    this.httpClient.post('api/post', uploadData)
-      .subscribe(
-        res => {console.log(res);
-          this.receivedImageData = res;
-          this.base64Data = this.receivedImageData.pic;
-          this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data; },
-        err => console.log('Error Occured duringng saving: ' + err)
-      );
+    this.httpClient.post("/api/post/",{
+      text: this.text,
+      photo: this.imgURL
+    }).subscribe(
+        res => {
+          this.receivedImageData = <Post>res;
+          this.convertedImg = this.receivedImageData.photo;
+        },
+      err => {
+        console.log('Error');
+      });
 
-*/
   }
 }
