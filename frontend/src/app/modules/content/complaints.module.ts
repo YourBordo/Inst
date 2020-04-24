@@ -6,12 +6,13 @@ import {ComplaintService} from "./services/complaint.service";
 import {AppComponent} from "../../app.component";
 import {NgbModule, NgbPaginationModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserModule} from "@angular/platform-browser";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [ComplaintsComponent],
-  imports: [HttpClientModule, CommonModule,BrowserModule, NgbModule, NgbPaginationModule],
-  providers: [ComplaintService, NgbPaginationModule],
-  exports: [ComplaintsComponent, NgbPaginationModule],
+  imports: [HttpClientModule, CommonModule, BrowserModule, NgxPaginationModule],
+  providers: [ComplaintService],
+  exports: [ComplaintsComponent],
   bootstrap: [AppComponent]
 })
 export class ComplaintsModule { }

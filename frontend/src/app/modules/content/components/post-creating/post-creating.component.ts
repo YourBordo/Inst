@@ -44,8 +44,10 @@ export class PostCreatingComponent {
       photo: this.imgURL
     }).subscribe(
         res => {
+/*
           this.receivedImageData = <Post>res;
           this.convertedImg = this.receivedImageData.photo;
+*/
         },
       err => {
         console.log('Error');

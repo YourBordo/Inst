@@ -5,9 +5,14 @@ all complaints
 -->
 <div class="complaints">
   <ul>
-    <li *ngFor="let complaint of complaints">{{complaint.text | json}}</li>
+    <li *ngFor="let complaint of complaints | paginate:
+    { itemsPerPage: itemsAmount, currentPage: page }">{{complaint.text}}</li>
   </ul>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
 </div>
+<!--
 <ngb-pagination class="pagination" [collectionSize]="complaintsAmount" [pageSize]="itemsAmount"
                 [(page)]="page" (pageChange)="onPageChanged()" [boundaryLinks]="true"></ngb-pagination>
+-->
 

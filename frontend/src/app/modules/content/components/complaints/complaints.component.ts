@@ -10,8 +10,8 @@ import {ComplaintService} from "../../services/complaint.service";
 
 export class ComplaintsComponent implements OnInit{
 
-  public page: number = 1;
-  public itemsAmount: number = 4;
+  public page: number =1 ;
+  public itemsAmount: number = 3;
   public complaints: Complaint[];
   public complaintsAmount: number;
   constructor(private complaintService:ComplaintService) {}
@@ -20,11 +20,14 @@ export class ComplaintsComponent implements OnInit{
 
     this.complaintService.getComplaints().subscribe((response:Complaint[]) =>{
         this.complaintsAmount = response.length;
+        this.complaints = response;
+
       }
     );
-    this.onPageChanged();
+    //this.onPageChanged();
   }
 
+/*
   public onPageChanged()
   {
     this.complaintService.getComplaintsPage(this.page, this.itemsAmount)
@@ -33,5 +36,7 @@ export class ComplaintsComponent implements OnInit{
         }
       );
 
+
   }
+*/
 }

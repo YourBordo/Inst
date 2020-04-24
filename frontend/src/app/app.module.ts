@@ -9,6 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {ComplaintsComponent} from "./modules/content/components/complaints/complaints.component";
 import {PostCreatingComponent} from "./modules/content/components/post-creating/post-creating.component";
 import {PostCreatingModule} from "./modules/content/post-creating.module";
+import {NgxPaginationModule} from "ngx-pagination";
 
 const appRoutes: Routes =[
   { path: 'complaints', component: ComplaintsComponent},
