@@ -1,9 +1,6 @@
-//import { ImageData } from './ImageModel';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import {PostService} from "../../services/post.service";
 import {Post} from "../../../models/post";
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'post-create',
@@ -12,8 +9,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 
 export class PostCreatingComponent {
+  private receivedImageData: Post;
 
-  constructor(private httpClient: HttpClient, public _DomSanitizationService: DomSanitizer) { }
+  constructor(private httpClient: HttpClient) { }
 
   public selectedFile;
   public text: string;
@@ -32,11 +30,10 @@ export class PostCreatingComponent {
 
   }
 
-  private receivedImageData: Post;
   public convertedImg: any;
 
   onUpload() {
-    console.log(this.imgURL);
+   // console.log(this.imgURL);
 
 
     this.httpClient.post("/api/post/",{
@@ -44,10 +41,10 @@ export class PostCreatingComponent {
       photo: this.imgURL
     }).subscribe(
         res => {
-/*
+
           this.receivedImageData = <Post>res;
           this.convertedImg = this.receivedImageData.photo;
-*/
+
         },
       err => {
         console.log('Error');

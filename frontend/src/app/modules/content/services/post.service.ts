@@ -6,12 +6,15 @@ import {Post} from "../../models/post";
 @Injectable()
 export class PostService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) {}
+
+  public getWallPosts(id: number):Observable<object>{
+    return this.httpClient.get("/api/post/wall/"+id);
+  }
+  public getUserPosts():Observable<object>{
+    return this.httpClient.get("/api/complaint/user={id}");
   }
 
-  postData(post: Post) {
-    const body = {text: post.text, photo: post.photo};
-    return this.httpClient.post('api/post', body);
 
-  }
+
 }

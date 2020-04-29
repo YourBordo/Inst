@@ -24,19 +24,5 @@ export class ComplaintsComponent implements OnInit{
 
       }
     );
-    //this.onPageChanged();
   }
-
-/*
-  public onPageChanged()
-  {
-    this.complaintService.getComplaintsPage(this.page, this.itemsAmount)
-      .subscribe((response:Complaint[]) =>{
-          this.complaints = response;
-        }
-      );
-
-
-  }
-*/
 }

@@ -1,0 +1,13 @@
+.wall {
+  margin-top: 57px;
+  background-color: rgba(221, 204, 215, 0.56);
+  left:0;
+  right: 0;
+}
+body{
+  margin-left: 0;
+  margin-right: 0;
+  padding-right: 0;
+  padding-left: 0;
+
+}

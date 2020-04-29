@@ -1,0 +1,14 @@
+
+
+<div class="wall">
+  <ul>
+    <li *ngFor="let post of wallPosts">
+      {{post.text}}
+      <hr>
+      <img [src]="post.photo" height="200" *ngIf="post.photo">
+      <hr>
+
+    </li>
+
+  </ul>
+</div>
