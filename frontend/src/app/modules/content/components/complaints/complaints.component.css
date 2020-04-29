@@ -1,5 +1,9 @@
 .complaints {margin-top: 100px;}
-.pagination {
-  display: inline-block;
-}
 
+.my-pagination /deep/ .ngx-pagination .current  {
+  background: #b19891;
+
+}
+.my-pagination /deep/ .ngx-pagination   {
+
+}

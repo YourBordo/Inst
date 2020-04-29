@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class Post {
+public class Post implements Comparable<Post>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
@@ -96,6 +96,13 @@ public class Post {
         this.text = text;
         this.user = user;
     }
+
+
+    @Override
+    public int compareTo(Post o) {
+        return (this.getDate().compareTo(o.getDate()))*(-1);
+    }
+
 
 /*
     public Post(String date, long id, byte[] photo, String place, String text, User user) {

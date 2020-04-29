@@ -19,10 +19,14 @@ public class UserController {
     public User getUserByNickname(@PathVariable(name = "username") String nickname) {
         return userService.find(nickname);
     }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public User getUserByNickname(@PathVariable(name = "id") long id) {
+        return userService.find(id);
+    }
 
-    @RequestMapping(value = "/subscriptions/{username}", method = RequestMethod.GET)
-    public ResponseEntity<List<User>> getSubscriptions(@PathVariable(name = "username") String nickname) {
-    List<User> subscriptions = userService.getSubscriptions(nickname);
+    @RequestMapping(value = "/subscriptions/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<User>> getSubscriptions(@PathVariable(name = "id") long id) {
+    List<User> subscriptions = userService.getSubscriptions(id);
     return ResponseEntity.ok(subscriptions);
     }
 

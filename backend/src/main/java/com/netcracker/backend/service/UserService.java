@@ -8,6 +8,7 @@ import java.util.List;
 @Component
 public interface UserService {
      User find(String name);
+     User find(long id);
      User add(User user );
-     List<User>getSubscriptions(String name);
+     List<User>getSubscriptions(long id);
 }

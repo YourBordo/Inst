@@ -26,11 +26,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getSubscriptions(String name) {
-        Optional<User> user = Optional.ofNullable(userRepository.findByNickname(name));
+    public List<User> getSubscriptions(long id) {
+        Optional<User> user = Optional.ofNullable(userRepository.findById(id));
         if(user.isPresent()){
             return user.get().getSubscribedTo();
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public User find(long id) {
+        return userRepository.findById(id);
     }
 }
