@@ -1,10 +1,13 @@
-<div class="load-image">
+<html lang="en">
+<div class="load-page">
   <h3>Create new post!</h3>
 
-  <input type="file" (change)="onFileChanged($event)">
+  <div class="load-image">
+  <input  type="file" accept="image/*" class="inputfile" (change)="onFileChanged($event)">
   <img [src]="imgURL" height="200" *ngIf="imgURL">
 </div>
-<div>
+
+  <div>
   <h5>Enter text</h5>
   <input type="text" [(ngModel)]="text">
 </div>
@@ -14,3 +17,4 @@
 </div>
 <img [src]="convertedImg" height="200" *ngIf="convertedImg">
 
+</div>

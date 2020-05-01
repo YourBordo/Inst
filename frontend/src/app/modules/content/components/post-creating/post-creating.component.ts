@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {Post} from "../../../models/post";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'post-create',
@@ -11,7 +12,10 @@ import {Post} from "../../../models/post";
 export class PostCreatingComponent {
   private receivedImageData: Post;
 
-  constructor(private httpClient: HttpClient) { }
+  myDate = new Date();
+  currentDateTime: string;
+  constructor(private datePipe: DatePipe, private httpClient: HttpClient){
+    this.currentDateTime = this.datePipe.transform(this.myDate, 'yyyy-MM-dd hh:mm');}
 
   public selectedFile;
   public text: string;
@@ -35,10 +39,10 @@ export class PostCreatingComponent {
   onUpload() {
    // console.log(this.imgURL);
 
-
     this.httpClient.post("/api/post/",{
       text: this.text,
-      photo: this.imgURL
+      photo: this.imgURL,
+      date: this.currentDateTime
     }).subscribe(
         res => {
 

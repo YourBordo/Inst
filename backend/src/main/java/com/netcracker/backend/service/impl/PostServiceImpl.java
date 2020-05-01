@@ -32,7 +32,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> findSubscribersPosts(long id) {
        List<User> users = userService.getSubscriptions(id);//те, на кого подписан
-
+        users.add(userService.find(id));
         ArrayList<Post> posts = new ArrayList<>();
 
        for(User user: users)

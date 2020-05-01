@@ -44,7 +44,7 @@ public class Post implements Comparable<Post>{
     @Basic
     @Column(name = "place")
     private String place;
-    @JsonBackReference
+   // @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -87,6 +87,7 @@ public class Post implements Comparable<Post>{
     public void setPlace(String place) {
         this.place = place;
     }
+
     public Post(){};
     public Post(String date, long id, String photo, String place, String text, User user) {
         this.date = date;

@@ -1,14 +1,24 @@
+import {User} from "./user";
 
 export class Post {
-  private _id: bigint;
+  private _id: number;
   private _photo: any;
   private _text: string;
   private _date: string;
   private _place: string;
-  private _user_id: bigint;
+  private _user_id: number;
+  private _user: User;
 
 
-  constructor(id: bigint, photo: any, text: string, date: string, place: string, user_id: bigint) {
+  get user(): User {
+    return this._user;
+  }
+
+  set user(value: User) {
+    this._user = value;
+  }
+
+  constructor(id: number, photo: any, text: string, date: string, place: string, user_id: number) {
     this._id = id;
     this._photo = photo;
     this._text = text;
@@ -17,11 +27,11 @@ export class Post {
     this._user_id = user_id;
   }
 
-  get id(): bigint {
+  get id(): number {
     return this._id;
   }
 
-  set id(value: bigint) {
+  set id(value: number) {
     this._id = value;
   }
 
@@ -57,11 +67,11 @@ export class Post {
     this._place = value;
   }
 
-  get user_id(): bigint {
+  get user_id(): number {
     return this._user_id;
   }
 
-  set user_id(value: bigint) {
+  set user_id(value: number) {
     this._user_id = value;
   }
 }

@@ -1,13 +1,13 @@
 
 export class Complaint {
-  private _id: bigint;
+  private _id: number;
   private _status: boolean;
   private _text: string;
   private _date: string;
-  private _user_id: bigint;
+  private _user_id: number;
 
 
-  constructor(id: bigint, status: boolean, text: string, date: string, user_id: bigint) {
+  constructor(id: number, status: boolean, text: string, date: string, user_id: number) {
     this._id = id;
     this._status = status;
     this._text = text;
@@ -15,11 +15,11 @@ export class Complaint {
     this._user_id = user_id;
   }
 
-  get id(): bigint {
+  get id(): number {
     return this._id;
   }
 
-  set id(value: bigint) {
+  set id(value: number) {
     this._id = value;
   }
 
@@ -47,11 +47,11 @@ export class Complaint {
     this._date = value;
   }
 
-  get user_id(): bigint {
+  get user_id(): number {
     return this._user_id;
   }
 
-  set user_id(value: bigint) {
+  set user_id(value: number) {
     this._user_id = value;
   }
 }
