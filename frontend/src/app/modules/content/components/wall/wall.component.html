@@ -1,11 +1,5 @@
 <div class="wall">
   <ul>
-<!--
-    <li *ngFor="let user  of users ">
-      {{user.nickname}}
-    </li>
--->
-
     <li *ngFor="let post  of wallPosts; let i = index ">
         {{post.user.nickname}} {{  post.date | date:'EEEE, MMMM d, y аt h:mm'}}
       <hr>

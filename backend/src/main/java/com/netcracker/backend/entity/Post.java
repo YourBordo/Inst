@@ -1,8 +1,10 @@
 package com.netcracker.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -15,25 +17,12 @@ public class Post implements Comparable<Post>{
     @Lob
     @Column(name = "photo")
     private String photo;
-/*
-    private byte[] photo;
-*/
-
     public String getPhoto() {
         return photo;
     }
-
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-/*
-    public byte[] getPhoto() {
-        return photo;
-    }
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
-*/
 
     @Basic
     @Column(name = "text")
@@ -44,7 +33,8 @@ public class Post implements Comparable<Post>{
     @Basic
     @Column(name = "place")
     private String place;
-   // @JsonBackReference
+
+    // @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -54,6 +44,13 @@ public class Post implements Comparable<Post>{
     public void setUser(User user) {
         this.user = user;
     }
+
+
+
+    @JsonManagedReference(value="comment-post")
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comments;
+
 
     public long getId() {
         return id;
@@ -104,16 +101,4 @@ public class Post implements Comparable<Post>{
         return (this.getDate().compareTo(o.getDate()))*(-1);
     }
 
-
-/*
-    public Post(String date, long id, byte[] photo, String place, String text, User user) {
-        this.date = date;
-        this.id = id;
-        this.photo = photo;
-        this.place = place;
-        this.text = text;
-        this.user = user;
-
-    }
-*/
 }

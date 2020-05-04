@@ -34,9 +34,14 @@ public class User {
     @Column(name = "banned")
     private boolean banned;
 
-    @JsonManagedReference
+    @JsonManagedReference(value="complaint-user")
     @OneToMany(mappedBy = "user")
     private List<Complaint>  complaints;
+
+    @JsonManagedReference(value="comment-user")
+    @OneToMany(mappedBy = "user")
+    private List<Comment>  comments;
+
 
     @ManyToMany
     @JoinTable(

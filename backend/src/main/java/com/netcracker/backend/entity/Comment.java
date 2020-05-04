@@ -1,29 +1,27 @@
 package com.netcracker.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
 @Entity
-public class Complaint {
-
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
     private long id;
-    @Basic
-    @Column(name = "status")
-    private boolean status;     /*checked/unchecked*/
+
     @Basic
     @Column(name = "text")
     private String text;
+
     @Basic
     @Column(name = "date")
     private String date;
 
-    @JsonBackReference(value="complaint-user")
+   @JsonBackReference(value="comment-user")
     @ManyToOne
-    //@Column
     @JoinColumn(name = "userId")
     private User user;
     public User getUser() {
@@ -33,10 +31,8 @@ public class Complaint {
         this.user = user;
     }
 
-
-    @JsonBackReference
+   @JsonBackReference(value="comment-post")
     @ManyToOne
-    //@Column
     @JoinColumn(name = "postId")
     private Post post;
     public Post getPost() {
@@ -47,20 +43,11 @@ public class Complaint {
     }
 
 
-
-
     public long getId() {
         return id;
     }
     public void setId(long id) {
         this.id = id;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public String getText() {
@@ -76,4 +63,21 @@ public class Complaint {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public Comment() {
+    }
+    public Comment(String text,String date, User user, Post post)
+    {
+        this.date = date;
+        this.text = text;
+        this.user = user;
+        this.post = post;
+    }
+
+
+
+
+
 }
+
+

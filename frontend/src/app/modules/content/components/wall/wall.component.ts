@@ -14,15 +14,11 @@ export class WallComponent {
 
 
   public wallPosts: Post[];
-  public users: User[];
-  public usersId: number;
   public id: number = 1;
   public len: number;
 
 
-  constructor(private postService: PostService, private userService: UserService) {
-  }
-
+  constructor(private postService: PostService) {}
 
 
   public ngOnInit(): void {
