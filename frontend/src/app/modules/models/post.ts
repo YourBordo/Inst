@@ -18,13 +18,16 @@ export class Post {
     this._user = value;
   }
 
-  constructor(id: number, photo: any, text: string, date: string, place: string, user_id: number) {
+
+  constructor(id: number, photo: any, text: string, date: string,
+              place: string, user_id: number, user: User) {
     this._id = id;
     this._photo = photo;
     this._text = text;
     this._date = date;
     this._place = place;
     this._user_id = user_id;
+    this._user = user;
   }
 
   get id(): number {

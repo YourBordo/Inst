@@ -11,12 +11,14 @@ import {PostCreatingComponent} from "./modules/content/components/post-creating/
 import {PostCreatingModule} from "./modules/content/modules/post-creating.module";
 import {WallModule} from "./modules/content/modules/wall.module";
 import {WallComponent} from "./modules/content/components/wall/wall.component";
+import {UserPageModule} from "./modules/content/modules/user-page.module";
+import {UserPageComponent} from "./modules/content/components/user-page/user-page.component";
 
 const appRoutes: Routes =[
   { path: 'complaints', component: ComplaintsComponent},
   { path: 'create-post', component: PostCreatingComponent},
-  { path: 'wall', component: WallComponent}
-
+  { path: 'wall', component: WallComponent},
+  { path: 'user-page/:id', component: UserPageComponent}
 ];
 
 
@@ -26,7 +28,7 @@ const appRoutes: Routes =[
     BrowserModule,
     AppRoutingModule,
     HeaderModule,WallModule,
-    ComplaintsModule, PostCreatingModule, RouterModule.forRoot(appRoutes)
+    ComplaintsModule, PostCreatingModule,UserPageModule,  RouterModule.forRoot(appRoutes)
   ],
   bootstrap: [AppComponent]
 })

@@ -30,4 +30,10 @@ public class CommentServiceImpl implements CommentService {
                 (comment.getText(), comment.getDate(), comment.getUser(), comment.getPost());
         return commentRepository.save(current);
     }
+
+    @Override
+    public Comment delete(long id) {
+       commentRepository.deleteById(id);
+        return null;
+    }
 }

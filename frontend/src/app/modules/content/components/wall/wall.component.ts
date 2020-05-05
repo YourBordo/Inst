@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {PostService} from "../../services/post.service";
 import {Post} from "../../../models/post";
 import {UserService} from "../../services/user.service";
@@ -10,11 +10,11 @@ import {User} from "../../../models/user";
   styleUrls: ['./wall.component.css']
 })
 
-export class WallComponent {
+export class WallComponent implements OnInit{
 
 
   public wallPosts: Post[];
-  public id: number = 1;
+  public CURRENT_ID: number = 1;
   public len: number;
 
 
@@ -23,7 +23,7 @@ export class WallComponent {
 
   public ngOnInit(): void {
 
-    this.postService.getWallPosts(this.id).subscribe((response: Post[]) => {
+    this.postService.getWallPosts(this.CURRENT_ID).subscribe((response: Post[]) => {
       this.wallPosts = response;
       this.len =this.wallPosts.length;
       console.log(this.wallPosts);

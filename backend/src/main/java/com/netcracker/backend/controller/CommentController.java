@@ -29,4 +29,9 @@ public class CommentController {
         return commentService.add(comment);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public Comment deleteComment(@PathVariable(name = "id") Long id) {
+        return commentService.delete(id);
+    }
+
 }

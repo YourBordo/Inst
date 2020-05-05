@@ -2,19 +2,17 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {AppComponent} from "../../../app.component";
-import {WallComponent} from "../components/wall/wall.component";
+import {UserPageComponent} from "../components/user-page/user-page.component";
 import {PostService} from "../services/post.service";
-import {UserService} from "../services/user.service";
-
 
 @NgModule({
-  declarations: [WallComponent],
+  declarations: [UserPageComponent],
   imports: [
     CommonModule,
     FormsModule
   ],
-  providers: [PostService, UserService],
-  exports: [WallComponent],
+  providers: [PostService],
+  exports: [UserPageComponent],
   bootstrap: [AppComponent]
 })
-export class WallModule { }
+export class UserPageModule { }

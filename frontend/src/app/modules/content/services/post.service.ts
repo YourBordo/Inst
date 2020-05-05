@@ -11,8 +11,8 @@ export class PostService {
   public getWallPosts(id: number):Observable<object>{
     return this.httpClient.get("/api/post/wall/"+id);
   }
-  public getUserPosts():Observable<object>{
-    return this.httpClient.get("/api/complaint/user={id}");
+  public getUserPosts(id: number):Observable<object>{
+    return this.httpClient.get("/api/post/user="+id);
   }
 
 

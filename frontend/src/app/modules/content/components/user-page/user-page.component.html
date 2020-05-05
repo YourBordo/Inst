@@ -1,0 +1,12 @@
+<div class="user-page">
+  <p>{{nickname}}</p>
+  <ul>
+    <li *ngFor="let post  of posts ">
+       {{  post.date | date:'EEEE, MMMM d, y аt h:mm'}}
+      <hr>
+      <img [src]="post.photo" height="200" *ngIf="post.photo">
+      {{post.text}}
+      <hr>
+    </li>
+  </ul>
+</div>
