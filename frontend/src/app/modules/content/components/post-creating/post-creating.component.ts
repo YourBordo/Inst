@@ -11,6 +11,7 @@ import {DatePipe} from "@angular/common";
 
 export class PostCreatingComponent {
   private receivedImageData: Post;
+  public CURRENT_ID: number = 1;
 
   myDate = new Date();
   currentDateTime: string;
@@ -22,6 +23,7 @@ export class PostCreatingComponent {
   public imgURL: any;
 
   public  onFileChanged(event) {
+
     console.log(event);
     this.selectedFile = event.target.files[0];
 
@@ -42,7 +44,11 @@ export class PostCreatingComponent {
     this.httpClient.post("/api/post/",{
       text: this.text,
       photo: this.imgURL,
-      date: this.currentDateTime
+      date: this.currentDateTime,
+      user:
+        {
+          id: this.CURRENT_ID
+        }
     }).subscribe(
         res => {
 

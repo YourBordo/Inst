@@ -15,6 +15,9 @@ export class PostService {
     return this.httpClient.get("/api/post/user="+id);
   }
 
+  public getPost(id: number):Observable<object>{
+    return this.httpClient.get("/api/post/"+id);
+  }
 
 
 }

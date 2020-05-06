@@ -1,0 +1,27 @@
+<div class = "single-post">
+  {{post.user.nickname}}
+  <hr>
+  {{  post.date | date:'EEEE, MMMM d, y аt h:mm'}}
+  <hr>
+  <img [src]="post.photo" height="200" *ngIf="post.photo" >
+  <hr>
+  {{post.text}}
+  <hr>
+  <ul>
+
+    <li *ngFor="let comment  of comments" >
+      {{comment.user.nickname}} says:
+      <hr>
+      {{comment.text}}
+      <hr>
+    </li>
+
+  </ul>
+  <hr>
+  <input type="text" [(ngModel)]="text">
+  <input type="button" (click)="onUpload()" value="add your comment">
+
+
+</div>
+
+

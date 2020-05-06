@@ -2,19 +2,21 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {AppComponent} from "../../../app.component";
-import {UserPageComponent} from "../components/user-page/user-page.component";
-import {PostService} from "../services/post.service";
+import {PostComponent} from "../components/post/post.component";
 import {AppRoutingModule} from "../../../app-routing.module";
+import {CommentService} from "../services/comment.service";
+import {PostService} from "../services/post.service";
 
 @NgModule({
-  declarations: [UserPageComponent],
+  declarations: [PostComponent],
   imports: [
     CommonModule,
     FormsModule,
     AppRoutingModule
+
   ],
-  providers: [PostService],
-  exports: [UserPageComponent],
+  providers: [CommentService, PostService],
+  exports: [PostComponent],
   bootstrap: [AppComponent]
 })
-export class UserPageModule { }
+export class PostModule { }

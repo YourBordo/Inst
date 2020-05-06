@@ -47,7 +47,9 @@ public class Post implements Comparable<Post>{
 
 
 
+/*
     @JsonManagedReference(value="comment-post")
+*/
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 

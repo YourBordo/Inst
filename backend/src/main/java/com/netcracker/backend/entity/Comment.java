@@ -20,7 +20,9 @@ public class Comment {
     @Column(name = "date")
     private String date;
 
+/*
    @JsonBackReference(value="comment-user")
+*/
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -31,7 +33,9 @@ public class Comment {
         this.user = user;
     }
 
+/*
    @JsonBackReference(value="comment-post")
+*/
     @ManyToOne
     @JoinColumn(name = "postId")
     private Post post;

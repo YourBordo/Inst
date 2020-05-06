@@ -38,9 +38,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Complaint>  complaints;
 
+/*
     @JsonManagedReference(value="comment-user")
     @OneToMany(mappedBy = "user")
     private List<Comment>  comments;
+*/
 
 
     @ManyToMany
