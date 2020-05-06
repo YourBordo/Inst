@@ -8,7 +8,8 @@
       <!--['/current-post', post.id]-->
       {{  post.date | date:'EEEE, MMMM d, y аt h:mm'}}
       <hr>
-      <img [src]="post.photo" height="200" *ngIf="post.photo" routerLink="/current-post/35">
+      <img [src]="post.photo" height="200" *ngIf="post.photo"
+           [routerLink]="['/current-post', post.id]">
       {{post.text}}
       <hr>
     </li>

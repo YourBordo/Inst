@@ -2,13 +2,13 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {AppComponent} from "../../../app.component";
-import {PostComponent} from "../components/post/post.component";
+import {SinglePostComponent} from "../components/single-post/single-post.component";
 import {AppRoutingModule} from "../../../app-routing.module";
 import {CommentService} from "../services/comment.service";
 import {PostService} from "../services/post.service";
 
 @NgModule({
-  declarations: [PostComponent],
+  declarations: [SinglePostComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -16,7 +16,7 @@ import {PostService} from "../services/post.service";
 
   ],
   providers: [CommentService, PostService],
-  exports: [PostComponent],
+  exports: [SinglePostComponent],
   bootstrap: [AppComponent]
 })
-export class PostModule { }
+export class SinglePostModule { }

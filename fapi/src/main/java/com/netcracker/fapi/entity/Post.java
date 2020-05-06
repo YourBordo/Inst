@@ -1,20 +1,11 @@
-package com.netcracker.backend.entity;
+package com.netcracker.fapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import javax.persistence.*;
 import java.util.List;
 
 
-@Entity
 public class Post implements Comparable<Post>{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
     private long id;
 
-    @Lob
-    @Column(name = "photo")
     private String photo;
     public String getPhoto() {
         return photo;
@@ -22,20 +13,9 @@ public class Post implements Comparable<Post>{
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-
-    @Basic
-    @Column(name = "text")
     private String text;
-    @Basic
-    @Column(name = "date")
     private String date;
-    @Basic
-    @Column(name = "place")
     private String place;
-
-    // @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "userId")
     private User user;
     public User getUser() {
         return user;
@@ -44,19 +24,8 @@ public class Post implements Comparable<Post>{
         this.user = user;
     }
 
-
-
-/*
-    @JsonManagedReference(value="comment-post")
-*/
-
-
-    @JsonManagedReference(value="comment-post")
-    @OneToMany(mappedBy = "post")
     private List<Comment> comments;
-    @JsonManagedReference(value="like-post")
-    @OneToMany(mappedBy = "post")
-    private List<Likes> likes;
+
 
     public long getId() {
         return id;

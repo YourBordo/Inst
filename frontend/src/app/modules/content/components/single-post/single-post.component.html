@@ -1,5 +1,7 @@
 <div class = "single-post">
-  {{post.user.nickname}}
+    <ng-container  *ngIf="post && post.user && post.date && post.text">
+
+      {{post.user.nickname}}
   <hr>
   {{  post.date | date:'EEEE, MMMM d, y аt h:mm'}}
   <hr>
@@ -21,7 +23,7 @@
   <input type="text" [(ngModel)]="text">
   <input type="button" (click)="onUpload()" value="add your comment">
 
-
+    </ng-container>
 </div>
 
 

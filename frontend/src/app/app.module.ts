@@ -13,15 +13,15 @@ import {WallModule} from "./modules/content/modules/wall.module";
 import {WallComponent} from "./modules/content/components/wall/wall.component";
 import {UserPageModule} from "./modules/content/modules/user-page.module";
 import {UserPageComponent} from "./modules/content/components/user-page/user-page.component";
-import {PostComponent} from "./modules/content/components/post/post.component";
-import {PostModule} from "./modules/content/modules/post.module";
+import {SinglePostComponent} from "./modules/content/components/single-post/single-post.component";
+import {SinglePostModule} from "./modules/content/modules/single-post.module";
 
 const appRoutes: Routes =[
   { path: 'complaints', component: ComplaintsComponent},
   { path: 'create-post', component: PostCreatingComponent},
   { path: 'wall', component: WallComponent},
   { path: 'user-page/:id', component: UserPageComponent},
-  { path: 'current-post/:id', component: PostComponent},
+  { path: 'current-post/:id', component: SinglePostComponent},
 
 ];
 
@@ -32,7 +32,7 @@ const appRoutes: Routes =[
     BrowserModule,
     AppRoutingModule,
     HeaderModule,WallModule,
-    ComplaintsModule, PostCreatingModule,UserPageModule,PostModule,  RouterModule.forRoot(appRoutes)
+    ComplaintsModule, PostCreatingModule,UserPageModule,SinglePostModule,  RouterModule.forRoot(appRoutes)
   ],
   bootstrap: [AppComponent]
 })

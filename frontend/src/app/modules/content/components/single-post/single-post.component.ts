@@ -9,11 +9,11 @@ import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  templateUrl: './single-post.component.html',
+  styleUrls: ['./single-post.component.css']
 })
 
-export class PostComponent implements OnInit, DoCheck{
+export class SinglePostComponent implements OnInit, DoCheck{
   public CURRENT_ID: number = 1;
 
   myDate = new Date();

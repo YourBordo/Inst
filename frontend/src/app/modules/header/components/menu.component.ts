@@ -8,6 +8,7 @@ import {Subject} from "rxjs";
 
 })
 export class AppMenuComponent implements OnInit{
+  public CURRENT_ID: number = 1;
 
   public test: Subject<string> = new Subject<string>();
   public test2: Subject<string> = new Subject<string>();

@@ -1,14 +1,24 @@
-package com.netcracker.fapi.entity;
+package com.netcracker.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-public class Complaint {
+import javax.persistence.*;
 
+@Entity
+public class Likes {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="id")
     private long id;
-    private boolean status;     /*checked/unchecked*/
-    private String text;
+
+    @Basic
+    @Column(name = "date")
     private String date;
 
+    @JsonBackReference(value="like-user")
+    @ManyToOne
+    @JoinColumn(name = "userId")
     private User user;
     public User getUser() {
         return user;
@@ -17,6 +27,9 @@ public class Complaint {
         this.user = user;
     }
 
+    @JsonBackReference(value="like-post")
+    @ManyToOne
+    @JoinColumn(name = "postId")
     private Post post;
     public Post getPost() {
         return post;
@@ -31,27 +44,15 @@ public class Complaint {
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getText() {
-        return text;
-    }
-    public void setText(String text) {
-        this.text = text;
     }
 
     public String getDate() {
         return date;
     }
+
     public void setDate(String date) {
         this.date = date;
     }

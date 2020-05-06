@@ -38,6 +38,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Complaint>  complaints;
 
+    @JsonManagedReference(value="like-user")
+    @OneToMany(mappedBy = "user")
+    private List<Likes>  likes;
+
 /*
     @JsonManagedReference(value="comment-user")
     @OneToMany(mappedBy = "user")
