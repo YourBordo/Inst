@@ -1,5 +1,8 @@
 package com.netcracker.fapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 
@@ -23,8 +26,8 @@ public class Post implements Comparable<Post>{
     public void setUser(User user) {
         this.user = user;
     }
-
     private List<Comment> comments;
+    private List<Likes> likes;
 
 
     public long getId() {

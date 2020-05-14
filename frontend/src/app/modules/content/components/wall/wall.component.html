@@ -1,7 +1,7 @@
 <div class="wall">
   <ul>
     <li *ngFor="let post  of wallPosts; let i = index ">
-        {{post.user.nickname}} {{  post.date | date:'EEEE, MMMM d, y аt h:mm'}}
+        {{post.id}} {{  post.date | date:'EEEE, MMMM d, y аt h:mm'}}
       <hr>
       <img [src]="post.photo" height="200" *ngIf="post.photo"
            [routerLink] = "['/current-post', post.id]">

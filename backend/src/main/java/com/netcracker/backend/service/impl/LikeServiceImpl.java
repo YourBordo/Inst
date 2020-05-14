@@ -21,4 +21,8 @@ public class LikeServiceImpl implements LikeService {
         return likeRepository.findById(id);
     }
 
+    @Override
+    public List<Likes> find(Post post) {
+        return likeRepository.findAllByPost(post);
+    }
 }

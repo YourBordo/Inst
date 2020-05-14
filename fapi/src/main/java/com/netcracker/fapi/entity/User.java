@@ -1,5 +1,7 @@
 package com.netcracker.fapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 public class User {
@@ -14,19 +16,20 @@ public class User {
     private List<Complaint>  complaints;
     private List<User> subscribedTo;
     private List<User> subscribedBy;
-
+    private List<Post> posts;
+    private List<Likes>  likes;
+    private List<Comment>  comments;
     public List<User> getSubscribedTo() {
         return subscribedTo;
     }
 
+
     public void setSubscribedTo(List<User> subscribedTo) {
         this.subscribedTo = subscribedTo;
     }
-
     public List<User> getSubscribedBy() {
         return subscribedBy;
     }
-
     public void setSubscribedBy(List<User> subscribedBy) {
         this.subscribedBy = subscribedBy;
     }

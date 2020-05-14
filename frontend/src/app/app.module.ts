@@ -15,6 +15,9 @@ import {UserPageModule} from "./modules/content/modules/user-page.module";
 import {UserPageComponent} from "./modules/content/components/user-page/user-page.component";
 import {SinglePostComponent} from "./modules/content/components/single-post/single-post.component";
 import {SinglePostModule} from "./modules/content/modules/single-post.module";
+import {LoginFormComponent} from "./modules/content/components/login-form/login-form.component";
+import {LoginModule} from "./modules/content/modules/login.module";
+import {FormsModule} from "@angular/forms";
 
 const appRoutes: Routes =[
   { path: 'complaints', component: ComplaintsComponent},
@@ -22,6 +25,8 @@ const appRoutes: Routes =[
   { path: 'wall', component: WallComponent},
   { path: 'user-page/:id', component: UserPageComponent},
   { path: 'current-post/:id', component: SinglePostComponent},
+  { path: 'enter', component: LoginFormComponent},
+
 
 ];
 
@@ -31,8 +36,15 @@ const appRoutes: Routes =[
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HeaderModule,WallModule,
-    ComplaintsModule, PostCreatingModule,UserPageModule,SinglePostModule,  RouterModule.forRoot(appRoutes)
+    HeaderModule,
+    WallModule,
+    ComplaintsModule,
+    LoginModule,
+    PostCreatingModule,
+    UserPageModule,
+    SinglePostModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

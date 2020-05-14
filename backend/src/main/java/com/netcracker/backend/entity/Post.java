@@ -1,5 +1,6 @@
 package com.netcracker.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -33,7 +34,7 @@ public class Post implements Comparable<Post>{
     @Column(name = "place")
     private String place;
 
-    // @JsonBackReference
+    @JsonBackReference(value="user-post")
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -46,14 +47,10 @@ public class Post implements Comparable<Post>{
 
 
 
-/*
-    @JsonManagedReference(value="comment-post")
-*/
-
-
     @JsonManagedReference(value="comment-post")
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
+
     @JsonManagedReference(value="like-post")
     @OneToMany(mappedBy = "post")
     private List<Likes> likes;

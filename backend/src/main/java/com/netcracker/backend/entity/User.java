@@ -34,6 +34,10 @@ public class User {
     @Column(name = "banned")
     private boolean banned;
 
+    @JsonManagedReference(value="user-post")
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
+
     @JsonManagedReference(value="complaint-user")
     @OneToMany(mappedBy = "user")
     private List<Complaint>  complaints;
@@ -42,11 +46,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Likes>  likes;
 
-/*
+
     @JsonManagedReference(value="comment-user")
     @OneToMany(mappedBy = "user")
     private List<Comment>  comments;
-*/
+
 
 
     @ManyToMany

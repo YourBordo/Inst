@@ -10,4 +10,5 @@ import java.util.List;
 @Component
 public interface LikeService {
     Likes find(long id);
+    List<Likes> find(Post post);
 }

@@ -15,12 +15,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     public User getUserByNickname(@PathVariable(name = "username") String nickname) {
         return userService.find(nickname);
     }
+
+    @RequestMapping(value = "/login/{login}", method = RequestMethod.GET)
+    public ResponseEntity<User> getUserByLogin(@PathVariable(name = "login") String login) {
+        User user = userService.findByLogin(login);
+        return ResponseEntity.ok(user);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public User getUserByNickname(@PathVariable(name = "id") long id) {
+    public User getUserById(@PathVariable(name = "id") long id) {
         return userService.find(id);
     }
 

@@ -4,6 +4,7 @@ import com.netcracker.fapi.entity.User;
 import com.netcracker.fapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,12 @@ public class UserController {
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     public User getUserByNickname(@PathVariable(name = "username") String nickname) {
         return userService.find(nickname);
+    }
+
+    @RequestMapping(value = "/login/{login}", method = RequestMethod.GET)
+    public ResponseEntity<User> getUserByLogin(@PathVariable(name = "login") String login) {
+        User user = userService.findByLogin(login);
+        return ResponseEntity.ok(user);
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User getUserByNickname(@PathVariable(name = "id") long id) {
@@ -35,4 +42,9 @@ public class UserController {
         return userService.add(user);
     }
 
+    @PreAuthorize("isAnonymous()")
+    @RequestMapping(value="/signup", method = RequestMethod.POST, produces = "application/json")
+    public User saveUser(@RequestBody User user){
+        return userService.add(user);
+    }
 }
