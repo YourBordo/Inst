@@ -16,8 +16,8 @@ public class UserController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
-    public User getUserByNickname(@PathVariable(name = "username") String nickname) {
+    @RequestMapping(value = "/nickname/{nickname}", method = RequestMethod.GET)
+    public User getUserByNickname(@PathVariable(name = "nickname") String nickname) {
         return userService.find(nickname);
     }
 

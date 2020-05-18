@@ -26,6 +26,7 @@ export class LoginFormComponent implements OnInit {
       .subscribe((authToken: AuthToken) => {
         if (authToken.token) {
           this.storageService.setToken(authToken.token);
+          console.log(this.loginModel);
           this.userService.getAuthorizedUser()
             .subscribe((userModel: User) => {
               this.storageService.setCurrentUser(userModel);

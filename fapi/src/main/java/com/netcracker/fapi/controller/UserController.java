@@ -5,6 +5,8 @@ import com.netcracker.fapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +18,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
-    public User getUserByNickname(@PathVariable(name = "username") String nickname) {
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/current")
+    public User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        // todo exclude password from model!
+        return userService.findByLogin(((org.springframework.security.core.userdetails.User)
+                authentication.getPrincipal())
+                .getUsername());
+    }
+    @RequestMapping(value = "/nickname/{nickname}", method = RequestMethod.GET)
+    public User getUserByNickname(@PathVariable(name = "nickname") String nickname) {
         return userService.find(nickname);
     }
 

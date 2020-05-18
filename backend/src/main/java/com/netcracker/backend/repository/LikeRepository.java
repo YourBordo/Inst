@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface LikeRepository extends CrudRepository<Likes, Long> {
     List<Likes> findAllByPostAndUser(Post post, User user);
-    List<Likes> findAllByPost(Post post);
+    List<Likes> findAllByPostId(long postId);
     Likes findById(long id);
 }

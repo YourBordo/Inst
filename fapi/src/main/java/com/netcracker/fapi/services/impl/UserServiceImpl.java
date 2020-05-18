@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User find(String name) {
         RestTemplate restTemplate = new RestTemplate();
-        User user = restTemplate.getForObject(BackendUrl + "/api/user/" + name, User.class);
+        User user = restTemplate.getForObject(BackendUrl + "/api/user/nickname/" + name, User.class);
         return user;
     }
 
@@ -80,4 +80,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 "/api/user/subscriptions/"+id, User[].class);
         return Arrays.asList(users);
     }
+
+
 }

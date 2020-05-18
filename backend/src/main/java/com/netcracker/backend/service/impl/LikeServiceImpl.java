@@ -22,7 +22,7 @@ public class LikeServiceImpl implements LikeService {
     }
 
     @Override
-    public List<Likes> find(Post post) {
-        return likeRepository.findAllByPost(post);
+    public List<Likes> findByPostId(long postId) {
+        return likeRepository.findAllByPostId(postId);
     }
 }

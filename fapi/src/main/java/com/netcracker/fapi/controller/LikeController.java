@@ -1,11 +1,12 @@
-package com.netcracker.backend.controller;
+package com.netcracker.fapi.controller;
 
-import com.netcracker.backend.entity.Likes;
-import com.netcracker.backend.entity.Post;
-import com.netcracker.backend.entity.User;
-import com.netcracker.backend.service.LikeService;
+import com.netcracker.fapi.entity.Likes;
+import com.netcracker.fapi.services.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
