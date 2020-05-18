@@ -18,6 +18,9 @@ import {SinglePostModule} from "./modules/content/modules/single-post.module";
 import {LoginFormComponent} from "./modules/content/components/login-form/login-form.component";
 import {LoginModule} from "./modules/content/modules/login.module";
 import {FormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {UserService} from "./modules/content/services/user.service";
+import {APIInterceptor} from "./modules/content/services/api-interceptor";
 
 const appRoutes: Routes =[
   { path: 'complaints', component: ComplaintsComponent},
@@ -44,8 +47,14 @@ const appRoutes: Routes =[
     UserPageModule,
     SinglePostModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
+  providers: [UserService, APIInterceptor, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: APIInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
