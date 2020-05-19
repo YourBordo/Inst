@@ -12,5 +12,6 @@ public interface UserService {
      User add(User user);
      List<User>getSubscriptions(long id);
      User findByLogin(String login);
-
+     User findByComment(long id);
+     User findByPost(long id);
 }

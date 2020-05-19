@@ -3,6 +3,7 @@ import {PostService} from "../../services/post.service";
 import {Post} from "../../../models/post";
 import {UserService} from "../../services/user.service";
 import {User} from "../../../models/user";
+import {StorageService} from "../../services/storage.service";
 
 @Component({
   selector: 'wall',
@@ -14,21 +15,25 @@ export class WallComponent implements OnInit{
 
 
   public wallPosts: Post[];
-  public CURRENT_ID: number = 1;
-  public len: number;
 
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService,
+              public storageService: StorageService,
+              private userService: UserService) {}
 
 
   public ngOnInit(): void {
 
-    this.postService.getWallPosts(this.CURRENT_ID).subscribe((response: Post[]) => {
+    this.postService.getWallPosts(this.storageService.getCurrentUser().id).subscribe((response: Post[]) => {
       this.wallPosts = response;
-      this.len =this.wallPosts.length;
-      console.log(this.wallPosts);
 
-    });
 
+    for(let post of this.wallPosts ) {
+      this.userService.getUserByPostId(post.id).subscribe((response: User) => {
+        post.user = response;
+      });
+    }
+
+  });
   }
 }

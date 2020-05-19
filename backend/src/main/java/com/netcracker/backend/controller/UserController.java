@@ -1,5 +1,6 @@
 package com.netcracker.backend.controller;
 
+import com.netcracker.backend.entity.Comment;
 import com.netcracker.backend.entity.User;
 import com.netcracker.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,16 @@ public class UserController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public User addUser(@RequestBody User user) {
         return userService.add(user);
+    }
+
+    @RequestMapping(value = "/comment={id}", method = RequestMethod.GET)
+    public User getUserByCommentId(@PathVariable(name = "id") long id) {
+        return userService.findByComment(id);
+    }
+
+    @RequestMapping(value = "/post={id}", method = RequestMethod.GET)
+    public User getUserByPostId(@PathVariable(name = "id") long id) {
+        return userService.findByPost(id);
     }
 
 }

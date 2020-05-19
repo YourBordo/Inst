@@ -1,7 +1,8 @@
 <div class = "single-post">
-    <ng-container  *ngIf="post  && post.date && post.text">
+    <ng-container  *ngIf="post  && post.date && post.text && post.user.nickname">
 
-      {{post.id}}
+        {{post.user.nickname}}
+
   <hr>
   {{  post.date | date:'EEEE, MMMM d, y аt h:mm'}}
   <hr>
@@ -12,7 +13,12 @@
   <ul>
 
     <li *ngFor="let comment  of comments" >
-       says:
+      <ng-container *ngIf="comment.user.nickname">
+        {{comment.user.nickname}}
+      </ng-container>
+
+
+      says:
       <hr>
       {{comment.text}}
       <hr>

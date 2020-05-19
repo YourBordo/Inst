@@ -9,7 +9,6 @@ export class User {
   private _banned: boolean;
 
 
-
   get id(): number {
     return this._id;
   }

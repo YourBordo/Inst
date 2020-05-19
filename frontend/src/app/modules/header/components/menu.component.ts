@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Subject} from "rxjs";
+import {StorageService} from "../../content/services/storage.service";
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +9,10 @@ import {Subject} from "rxjs";
 
 })
 export class AppMenuComponent implements OnInit{
-  public CURRENT_ID: number = 1;
+
+  constructor( public storageService: StorageService) {
+  }
+  public id: number = this.storageService.getCurrentUser().id;
 
   public test: Subject<string> = new Subject<string>();
   public test2: Subject<string> = new Subject<string>();

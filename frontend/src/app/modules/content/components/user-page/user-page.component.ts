@@ -2,6 +2,9 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Post} from "../../../models/post";
 import {PostService} from "../../services/post.service";
+import {StorageService} from "../../services/storage.service";
+import {User} from "../../../models/user";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'user-page',
@@ -12,9 +15,11 @@ import {PostService} from "../../services/post.service";
 export class UserPageComponent implements OnInit{
 
   public posts: Post[];
-  public len: number;
   public nickname: string;
-  constructor(private route: ActivatedRoute, private postService: PostService) {}
+  constructor(private route: ActivatedRoute,
+              private postService: PostService,
+              public storageService: StorageService,
+              private userService: UserService) {}
 
 
   ngOnInit(): void {
@@ -24,8 +29,9 @@ export class UserPageComponent implements OnInit{
 
     this.postService.getUserPosts(id).subscribe((response: Post[]) => {
       this.posts = response;
-      this.nickname = this.posts[0].user.nickname;
-      this.len =this.posts.length;
+    });
+    this.userService.getUser(id).subscribe((response: User) => {
+      this.nickname = response.nickname;
     });
 
   }

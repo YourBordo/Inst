@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {Post} from "../../../models/post";
 import {DatePipe} from "@angular/common";
+import {StorageService} from "../../services/storage.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'post-create',
@@ -11,12 +13,15 @@ import {DatePipe} from "@angular/common";
 
 export class PostCreatingComponent {
   private receivedImageData: Post;
-  public CURRENT_ID: number = 1;
 
   myDate = new Date();
   currentDateTime: string;
-  constructor(private datePipe: DatePipe, private httpClient: HttpClient){
-    this.currentDateTime = this.datePipe.transform(this.myDate, 'yyyy-MM-dd hh:mm');}
+  constructor(private datePipe: DatePipe,
+              private httpClient: HttpClient,
+              public storageService: StorageService){
+
+    this.currentDateTime = this.datePipe.transform(this.myDate, 'yyyy-MM-dd hh:mm');
+  }
 
   public selectedFile;
   public text: string;
@@ -47,7 +52,7 @@ export class PostCreatingComponent {
       date: this.currentDateTime,
       user:
         {
-          id: this.CURRENT_ID
+          id: this.storageService.getCurrentUser().id
         }
     }).subscribe(
         res => {

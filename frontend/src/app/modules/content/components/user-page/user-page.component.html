@@ -1,6 +1,8 @@
 <div class="user-page">
   <p>My profile</p>
+  <ng-container *ngIf="nickname">
   <p>{{nickname}}</p>
+  </ng-container>
   <p>My posts:</p>
 
   <ul>

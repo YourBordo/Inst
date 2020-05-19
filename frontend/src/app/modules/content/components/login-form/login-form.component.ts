@@ -30,6 +30,7 @@ export class LoginFormComponent implements OnInit {
           this.userService.getAuthorizedUser()
             .subscribe((userModel: User) => {
               this.storageService.setCurrentUser(userModel);
+
             });
         }
       }, (error) => {

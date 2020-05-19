@@ -81,5 +81,18 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return Arrays.asList(users);
     }
 
+    @Override
+    public User findByComment(long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        User user = restTemplate.getForObject(BackendUrl + "/api/user/comment=" + id, User.class);
+        return user;
+    }
 
+    @Override
+    public User findByPost(long id) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        User user = restTemplate.getForObject(BackendUrl + "/api/user/post=" + id, User.class);
+        return user;
+    }
 }

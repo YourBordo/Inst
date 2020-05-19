@@ -58,4 +58,14 @@ public class UserController {
     public User saveUser(@RequestBody User user){
         return userService.add(user);
     }
+
+    @RequestMapping(value = "/comment={id}", method = RequestMethod.GET)
+    public User getUserByCommentId(@PathVariable(name = "id") long id) {
+        return userService.findByComment(id);
+    }
+    @RequestMapping(value = "/post={id}", method = RequestMethod.GET)
+    public User getUserByPostId(@PathVariable(name = "id") long id) {
+        return userService.findByPost(id);
+    }
+
 }

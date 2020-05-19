@@ -12,6 +12,14 @@ export class UserService {
   public getUser(id: number):Observable<object>{
     return this.httpClient.get("/api/user/" +id);
   }
+  public getUserByCommentId(id: number):Observable<object>{
+    return this.httpClient.get("/api/user/comment=" +id);
+  }
+  public getUserByPostId(id: number):Observable<object>{
+    return this.httpClient.get("/api/user/post=" +id);
+  }
+
+
   public generateToken(login: LoginModel): Observable<AuthToken> {
     return this.httpClient.post<AuthToken>("/api/token/generate-token", login);
   }
